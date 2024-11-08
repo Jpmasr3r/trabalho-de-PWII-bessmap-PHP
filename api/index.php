@@ -81,6 +81,12 @@ $route->post("/update", "Vehicles:update");
 $route->post("/delete", "Vehicles:delete");
 $route->group("null");
 
+/* Upload */
+$route->group("/upload");
+$route->post("/image", "Uploads:uploadImage");
+$route->group("null");
+
+
 
 $route->dispatch();
 

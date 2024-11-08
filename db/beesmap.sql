@@ -31,6 +31,7 @@ CREATE TABLE users (
     name VARCHAR(255),
     email VARCHAR(255),
     password VARCHAR(255),
+    image VARCHAR(255),
     team_leader BOOLEAN,
     team_id INT ,
     FOREIGN KEY (team_id) REFERENCES teams (id)
@@ -73,4 +74,4 @@ create table faqs(
 );
 
 
-SELECT * from areas;
+SELECT name, image from users;

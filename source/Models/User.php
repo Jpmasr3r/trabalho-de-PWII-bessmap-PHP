@@ -15,12 +15,14 @@ class User extends Model
     private $teamId;
     private $teamLeader;
     private $message;
+    private $image;
 
     public function __construct(
         int $id = null,
         string $name = null,
         string $email = null,
         string $password = null,
+        string $image = null,
         int $teamId = null,
         int $teamLeader = 0,
     ) {
@@ -30,6 +32,7 @@ class User extends Model
         $this->password = $password;
         $this->teamId = $teamId;
         $this->teamLeader = $teamLeader;
+        $this->image = $image;
         $this->entity = "users";
     }
 
@@ -93,10 +96,28 @@ class User extends Model
         $this->password = $password;
     }
 
+    // Getter e Setter para 'message'
     public function getMessage(): ?string
     {
         return $this->message;
     }
+
+    public function setMessage(?string $message): void
+    {
+        $this->message = $message;
+    }
+
+    // Getter e Setter para 'image'
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
+    }
+
 
     public function insert(): ?int
     {
@@ -192,13 +213,14 @@ class User extends Model
             return false;
         }
 
-        $query = "UPDATE users SET name = :name, email = :email, team_id = :team_id, team_leader = :team_leader WHERE id = :id";
+        $query = "UPDATE users SET name = :name, email = :email, team_id = :team_id, team_leader = :team_leader, image = :image WHERE id = :id";
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":team_id", $this->teamId);
         $stmt->bindParam(":team_leader", $this->teamLeader);
+        $stmt->bindParam(":image", $this->image);
         $stmt->bindParam(":id", $this->id);
 
         try {

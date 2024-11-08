@@ -197,3 +197,59 @@ a {
 		height: 15%;
 	}
 }
+
+/* Inputs Styles for WindowInput */
+#div-window-input {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #f9f9f9;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	z-index: 1000;
+	width: 300px;
+	max-width: 80%;
+	box-sizing: border-box;
+}
+
+#div-window-input label {
+	display: block;
+	margin-bottom: 15px;
+}
+
+#div-window-input input {
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	font-size: 14px;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#div-window-input input:focus {
+	border-color: #4caf50; /* Green border on focus */
+	box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Green shadow on focus */
+	outline: none; /* Remove default outline */
+}
+
+#div-window-input button {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	background-color: #4caf50; /* Green */
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+#div-window-input button:hover {
+	background-color: #45a049;
+}

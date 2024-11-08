@@ -11,6 +11,14 @@ class WindowInput {
 			const div = document.createElement("div");
 			div.id = "div-window-input";
 
+			const btnExit = document.createElement("button");
+			btnExit.innerHTML = "X";
+			btnExit.addEventListener("click", () => {
+				location.reload();
+			});
+
+			div.appendChild(btnExit);
+
 			this.forms.forEach((e, index) => {
 				const label = document.createElement("label");
 				label.style.display = "block";

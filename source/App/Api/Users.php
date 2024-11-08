@@ -14,7 +14,8 @@ class Users extends Api
         parent::__construct();
     }
 
-    public function listUsers() : void {
+    public function listUsers(): void
+    {
         $user = new User();
         $allUsers = $user->selectAll();
         $this->back([
@@ -98,7 +99,7 @@ class Users extends Api
         $user = new User();
         $userSession = $user->selectById($this->userAuth->id);
         foreach ($data as $key => $value) {
-            if ($value == null || $value == "") {
+            if ($value == null || $value == "" || $value == "undefined") {
                 $data[$key] = $userSession[$key];
             }
         }
@@ -108,8 +109,8 @@ class Users extends Api
             $data["name"],
             $data["email"],
             null,
+            $data["image"],
             $userSession["team_id"],
-            $userSession["team_leader"],
         );
 
         if (!$user->update()) {
@@ -212,8 +213,8 @@ class Users extends Api
                 "type" => "success",
                 "data" => [
                     "name" => $userSession["name"],
-                    "team_name" => false,
-                    "image" => "",
+                    "team_name" => "",
+                    "image" => $userSession["image"],
                 ]
             ]);
             return;
@@ -227,7 +228,7 @@ class Users extends Api
             "data" => [
                 "name" => $userSession["name"],
                 "team_name" => $teamSelect["name"],
-                "image" => "",
+                "image" => $userSession["image"],
             ]
         ]);
     }

@@ -1,5 +1,5 @@
 <?php
-    echo $this->layout("_theme");
+echo $this->layout("_theme");
 ?>
 
 <link rel="stylesheet" href="<?= url("themes/app/assets/css/styles-profile.css") ?>">
@@ -9,8 +9,8 @@
     <div id="div-profile">
         <img src="<?= url("themes/_assets/imgs/bee-white.png") ?>" alt="Foto de Perfil">
         <div id="div-profile-info">
-            <h1>Abelha de teste</h1>
-            <p>Equipe: Equipe de Abelhas de Teste</p>
+            <h1>Nome do usuario</h1>
+            <p>Não Pertence a nenhuma equipe</p>
         </div>
     </div>
 </div>

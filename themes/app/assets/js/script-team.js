@@ -21,7 +21,7 @@ async function update() {
 		const team = await new Team().getInfs();
 
 		team.data.members.forEach((member) => {
-			insertMember(member.name);
+			insertMember(member.name, member.image);
 		});
 	}
 }
@@ -62,11 +62,14 @@ function insertTeam(team) {
 	});
 }
 
-function insertMember(memberName = "") {
+function insertMember(
+	memberName = "",
+	memberImage = "http://localhost/beesmap/themes/_assets/imgs/bee-black.png",
+) {
 	const div = document.createElement("div");
 	div.className = "team-member";
 	const img = document.createElement("img");
-	img.src = "http://localhost/beesmap/themes/_assets/imgs/bee-black.png";
+	img.src = memberImage;
 	const div2 = document.createElement("div");
 	div2.className = "team-member-info";
 	const h1 = document.createElement("h1");
@@ -259,7 +262,7 @@ async function listBoxesByArea(area_id, divBoxes) {
 		div.className = "box";
 
 		const h1_identifier = document.createElement("h1");
-		h1_identifier.innerHTML = box.identifier;
+		h1_identifier.innerHTML = `${box.identifier}✏️`;
 		h1_identifier.addEventListener("click", () => {
 			editBoxName(box.id);
 		});

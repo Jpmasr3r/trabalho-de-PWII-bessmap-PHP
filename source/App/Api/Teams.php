@@ -63,8 +63,8 @@ class Teams extends Api
             $userSession["name"],
             $userSession["email"],
             null,
-            $team->getId(),
-            true
+            $userSession["image"],
+            $team->getId()
         );
 
         if (!$user->update()) {
@@ -127,8 +127,8 @@ class Teams extends Api
             $userSession["name"],
             $userSession["email"],
             null,
+            $userSession["image"],
             $teamSelect[0]["id"],
-            false
         );
 
         if (!$user->update()) {
@@ -203,8 +203,8 @@ class Teams extends Api
                 $e["name"],
                 $e["email"],
                 null,
+                $e["image"],
                 null,
-                false,
             );
 
             if (!$member->update()) {
@@ -243,8 +243,8 @@ class Teams extends Api
             $userSession["name"],
             $userSession["email"],
             null,
-            null,
-            false
+            $userSession["image"],
+            null
         );
 
         if (!$user->update()) {
@@ -292,7 +292,7 @@ class Teams extends Api
 
         $team = new Team();
         $teamSelect = $team->selectById($userSession["team_id"]);
-        $userByTeamId = $user->selectBy("team_id", $teamSelect["id"], "name");
+        $userByTeamId = $user->selectBy("team_id", $teamSelect["id"], "name, image");
 
 
         $this->back([

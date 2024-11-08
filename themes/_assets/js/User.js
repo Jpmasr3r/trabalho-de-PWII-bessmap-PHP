@@ -5,54 +5,30 @@ class User {
 	email;
 	password;
 	confirmPassword;
+	image;
 
-	constructor(email = "", password = "", confirmPassword = "", name = "") {
-		this.setName(name);
-		this.setEmail(email);
-		this.setPassword(password);
-		this.setConfirmPassword(confirmPassword);
-	}
-
-	//setters
-	setName(name) {
+	constructor(
+		email = "",
+		password = "",
+		confirmPassword = "",
+		name = "",
+		image = "",
+	) {
 		this.name = name;
-	}
-
-	setEmail(email) {
 		this.email = email;
-	}
-
-	setPassword(password) {
 		this.password = password;
-	}
-
-	setConfirmPassword(confirmPassword) {
 		this.confirmPassword = confirmPassword;
-	}
-	//getters
-	getName() {
-		return this.name;
-	}
-
-	getEmail() {
-		return this.email;
-	}
-
-	getPassword() {
-		return this.password;
-	}
-
-	getConfirmPassword() {
-		return this.confirmPassword;
+		this.image = image;
 	}
 
 	//functions
 	getFormData() {
 		const formData = new FormData();
-		formData.append("name", this.getName());
-		formData.append("email", this.getEmail());
-		formData.append("password", this.getPassword());
-		formData.append("confirmPassword", this.getConfirmPassword());
+		formData.append("name", this.name);
+		formData.append("email", this.email);
+		formData.append("password", this.password);
+		formData.append("confirmPassword", this.confirmPassword);
+		formData.append("image", this.image);
 		return formData;
 	}
 
@@ -100,7 +76,7 @@ class User {
 		try {
 			localStorage.removeItem("token");
 
-			new Notification("Deslogado com sucesso", "sucess");
+			new Notification("Deslogado com sucesso", "success");
 
 			return {
 				type: "sucess",
@@ -119,12 +95,15 @@ class User {
 	async update() {
 		try {
 			const data = await fetch("http://localhost/beesmap/api/users/update", {
-				method: "PUT",
+				method: "POST",
 				body: this.getFormData(),
 				headers: {
 					token: localStorage.getItem("token"),
 				},
 			}).then((res) => res.json());
+
+			console.log(data);
+
 			return data;
 		} catch (error) {
 			return {
@@ -142,7 +121,7 @@ class User {
 			const data = await fetch(
 				"http://localhost/beesmap/api/users/updatePassword",
 				{
-					method: "PUT",
+					method: "POST",
 					body: this.getFormData(),
 					headers: {
 						token: localStorage.getItem("token"),
@@ -158,10 +137,10 @@ class User {
 		}
 	}
 
-	async deconste() {
+	async delete() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/users/deconste", {
-				method: "DEconstE",
+			const data = await fetch("http://localhost/beesmap/api/users/delete", {
+				method: "POST",
 				body: this.getFormData(),
 				headers: {
 					token: localStorage.getItem("token"),
@@ -216,6 +195,40 @@ class User {
 		try {
 			const data = await fetch("http://localhost/beesmap/api/users/infs", {
 				method: "GET",
+				headers: {
+					token: localStorage.getItem("token"),
+				},
+			}).then((res) => res.json());
+
+			return data;
+		} catch (error) {
+			new Notification(error, "error");
+
+			return {
+				type: "error",
+				message: error,
+			};
+		}
+	}
+
+	async changeProfileImage(image) {
+		try {
+			const formData = new FormData();
+			formData.append("image", image);
+
+			const data = await fetch("http://localhost/beesmap/api/upload/image", {
+				method: "POST",
+				body: formData,
+				headers: {
+					token: localStorage.getItem("token"),
+				},
+			}).then((res) => res.json());
+
+			this.image = data.path;
+
+			await fetch("http://localhost/beesmap/api/users/update", {
+				method: "POST",
+				body: this.getFormData(),
 				headers: {
 					token: localStorage.getItem("token"),
 				},
