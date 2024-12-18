@@ -25,13 +25,16 @@ class Box {
 
 	async insert() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/boxes", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/boxes",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -45,7 +48,7 @@ class Box {
 	async list() {
 		try {
 			const data = await fetch(
-				`http://localhost/beesmap/api/boxes/${this.area_id}`,
+				`http://localhost/trabalho-de-PWII-bessmap-PHP/api/boxes/${this.area_id}`,
 				{
 					method: "GET",
 					headers: {
@@ -65,13 +68,16 @@ class Box {
 
 	async delete() {
 		try {
-			const data = await fetch(`http://localhost/beesmap/api/boxes/delete`, {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				`http://localhost/trabalho-de-PWII-bessmap-PHP/api/boxes/delete`,
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -84,13 +90,16 @@ class Box {
 
 	async update() {
 		try {
-			const data = await fetch(`http://localhost/beesmap/api/boxes/update`, {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				`http://localhost/trabalho-de-PWII-bessmap-PHP/api/boxes/update`,
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {

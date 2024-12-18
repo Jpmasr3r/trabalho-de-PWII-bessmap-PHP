@@ -27,13 +27,16 @@ class Area {
 
 	async insert() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/areas", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/areas",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -46,12 +49,15 @@ class Area {
 
 	async list() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/areas", {
-				method: "GET",
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/areas",
+				{
+					method: "GET",
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -64,13 +70,16 @@ class Area {
 
 	async delete() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/areas/delete", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/areas/delete",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -83,13 +92,16 @@ class Area {
 
 	async update() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/areas/update", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/areas/update",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {

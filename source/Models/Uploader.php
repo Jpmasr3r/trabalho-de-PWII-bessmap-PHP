@@ -50,7 +50,7 @@ class Uploader
             try {
                 $uploaded = $upload->upload($this->file, pathinfo($this->file['name'], PATHINFO_FILENAME), 200);
 
-                $this->path = "http://localhost/beesmap/" . str_replace($uploadDir, $relativeUploadDir, $uploaded);
+                $this->path = "http://localhost/trabalho-de-PWII-bessmap-PHP/" . str_replace($uploadDir, $relativeUploadDir, $uploaded);
                 $this->message = "Arquivo enviado com sucesso.";
                 return true;
             } catch (Exception $e) {

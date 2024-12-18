@@ -36,13 +36,16 @@ class Team {
 	//functions
 	async insert() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/teams", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/teams",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -55,13 +58,16 @@ class Team {
 
 	async join() {
 		try {
-			const data = await fetch(`http://localhost/beesmap/api/teams/join`, {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				`http://localhost/trabalho-de-PWII-bessmap-PHP/api/teams/join`,
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			new Notification(data.message, data.type);
 
@@ -76,13 +82,16 @@ class Team {
 
 	async update() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/teams/update", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/teams/update",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -95,12 +104,15 @@ class Team {
 
 	async delete() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/teams/delete", {
-				method: "POST",
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/teams/delete",
+				{
+					method: "POST",
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -113,12 +125,15 @@ class Team {
 
 	async getInfs() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/teams/infs", {
-				method: "GET",
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/teams/infs",
+				{
+					method: "GET",
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -132,7 +147,7 @@ class Team {
 	async getAllTeamsByName(name = "") {
 		try {
 			const data = await fetch(
-				`http://localhost/beesmap/api/teams/select/${name}`,
+				`http://localhost/trabalho-de-PWII-bessmap-PHP/api/teams/select/${name}`,
 				{
 					method: "GET",
 					headers: {
@@ -152,12 +167,15 @@ class Team {
 
 	async exit() {
 		try {
-			const data = await fetch(`http://localhost/beesmap/api/teams/exit`, {
-				method: "POST",
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				`http://localhost/trabalho-de-PWII-bessmap-PHP/api/teams/exit`,
+				{
+					method: "POST",
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			new Notification(data.message, data.type);
 

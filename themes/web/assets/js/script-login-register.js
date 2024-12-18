@@ -19,7 +19,7 @@ btnCreate.addEventListener("click", async () => {
 	const userInsert = await user.insert();
 	if (userInsert.type === "success") {
 		setTimeout(() => {
-			location.href = "http://localhost/beesmap/login";
+			location.href = "http://localhost/trabalho-de-PWII-bessmap-PHP/login";
 		}, 1500);
 	}
 });
@@ -36,7 +36,7 @@ btnLogin.addEventListener("click", async () => {
 		localStorage.setItem("token", userLogin.token);
 
 		setTimeout(() => {
-			location.href = "http://localhost/beesmap/app";
+			location.href = "http://localhost/trabalho-de-PWII-bessmap-PHP/app";
 		}, 1500);
 	}
 });

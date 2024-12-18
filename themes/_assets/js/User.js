@@ -34,10 +34,13 @@ class User {
 
 	async insert() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/users", {
-				method: "POST",
-				body: this.getFormData(),
-			}).then((res) => res.json());
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/users",
+				{
+					method: "POST",
+					body: this.getFormData(),
+				},
+			).then((res) => res.json());
 
 			new Notification(data.message, data.type);
 
@@ -54,10 +57,13 @@ class User {
 
 	async login() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/users/login", {
-				method: "POST",
-				body: this.getFormData(),
-			}).then((res) => res.json());
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/users/login",
+				{
+					method: "POST",
+					body: this.getFormData(),
+				},
+			).then((res) => res.json());
 
 			new Notification(data.message, data.type);
 
@@ -94,13 +100,16 @@ class User {
 
 	async update() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/users/update", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/users/update",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			console.log(data);
 
@@ -119,7 +128,7 @@ class User {
 			formData.append("newPassword", newPassword);
 			formData.append("confirmNewPassword", confirmNewPassword);
 			const data = await fetch(
-				"http://localhost/beesmap/api/users/updatePassword",
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/users/updatePassword",
 				{
 					method: "POST",
 					body: this.getFormData(),
@@ -139,13 +148,16 @@ class User {
 
 	async delete() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/users/delete", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/users/delete",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 			return data;
 		} catch (error) {
 			return {
@@ -157,12 +169,15 @@ class User {
 
 	async logged() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/users/logged", {
-				method: "GET",
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/users/logged",
+				{
+					method: "GET",
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -175,12 +190,15 @@ class User {
 
 	async exitTeam() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/teams/exit", {
-				method: "POST",
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/teams/exit",
+				{
+					method: "POST",
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -193,12 +211,15 @@ class User {
 
 	async getInfs() {
 		try {
-			const data = await fetch("http://localhost/beesmap/api/users/infs", {
-				method: "GET",
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/users/infs",
+				{
+					method: "GET",
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {
@@ -216,23 +237,29 @@ class User {
 			const formData = new FormData();
 			formData.append("image", image);
 
-			const data = await fetch("http://localhost/beesmap/api/upload/image", {
-				method: "POST",
-				body: formData,
-				headers: {
-					token: localStorage.getItem("token"),
+			const data = await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/upload/image",
+				{
+					method: "POST",
+					body: formData,
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			this.image = data.path;
 
-			await fetch("http://localhost/beesmap/api/users/update", {
-				method: "POST",
-				body: this.getFormData(),
-				headers: {
-					token: localStorage.getItem("token"),
+			await fetch(
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/api/users/update",
+				{
+					method: "POST",
+					body: this.getFormData(),
+					headers: {
+						token: localStorage.getItem("token"),
+					},
 				},
-			}).then((res) => res.json());
+			).then((res) => res.json());
 
 			return data;
 		} catch (error) {

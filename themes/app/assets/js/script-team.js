@@ -57,14 +57,15 @@ function insertTeam(team) {
 		const teamClass = new Team(team.name);
 		const join = await teamClass.join();
 		if (join.type === "success") {
-			location.href = "http://localhost/beesmap/app/equipe";
+			location.href =
+				"http://localhost/trabalho-de-PWII-bessmap-PHP/app/equipe";
 		}
 	});
 }
 
 function insertMember(
 	memberName = "",
-	memberImage = "http://localhost/beesmap/themes/_assets/imgs/bee-black.png",
+	memberImage = "http://localhost/trabalho-de-PWII-bessmap-PHP/themes/_assets/imgs/bee-black.png",
 ) {
 	const div = document.createElement("div");
 	div.className = "team-member";
